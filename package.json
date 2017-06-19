@@ -1,0 +1,31 @@
+{
+  "name": "learn-preact",
+  "version": "0.0.0",
+  "description": "Practice code for egghead.io course Up and running with Preact by Shane Osbourne.",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sudaraka/learn-preact.git"
+  },
+  "author": "Sudaraka Wijesinghe <sudaraka@sudaraka.org> (https://sudaraka.org/)",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/sudaraka/learn-preact/issues"
+  },
+  "homepage": "https://github.com/sudaraka/learn-preact#readme",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "dependencies": {
+    "preact": "^8.1.0"
+  }
+}
