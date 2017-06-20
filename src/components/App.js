@@ -1,33 +1,11 @@
 import { h, Component } from 'preact'
+import linkState from 'linkstate'
 
 export default class App extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      'text': ''
-    }
-
-    this.setText = this.setText.bind(this)
-    this.submit = this.submit.bind(this)
-  }
-
-  setText(e) {
-    this.setState({
-      'text': e.target.value
-    })
-  }
-
-  submit() {
-    console.log(this.state.text)
-  }
-
-  render() {
+  render(props, { text = '' }) {
     return (
       <div>
-        <form onSubmit={ this.submit } action="">
-          <input type="text" value={ this.state.text } onInput={ this.setText } />
-        </form>
+        <input type="text" value={ text } onInput={ linkState(this, 'text') } />
 
         <pre>
           <code>{ JSON.stringify(this.state, null, 2) }</code>

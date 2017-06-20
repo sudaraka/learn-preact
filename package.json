@@ -27,6 +27,7 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "linkstate": "^1.0.1",
     "preact": "^8.1.0"
   }
 }
