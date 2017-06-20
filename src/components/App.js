@@ -24,12 +24,12 @@ export default class App extends Component {
       .catch(console.error)
   }
 
-  render() {
+  render({ urls }, { user, loading }) {
     return (
       <div class='app'>
-      { this.state.loading
-        ? <p>Please wait...</p>
-        : <User name={ this.state.user.name } image={ this.state.user.avatar_url} />
+      { loading
+        ? <p>Fetching { urls.user }</p>
+        : <User name={ user.name } image={ user.avatar_url} />
       }
       </div>
     )
