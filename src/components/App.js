@@ -1,25 +1,37 @@
-import { h } from 'preact'
+import { h, Component } from 'preact'
 
 import User from './User'
 
-const
-  USERS = [
-    {
-      'image': 'https://avatars0.githubusercontent.com/u/470827?v=3&s=46',
-      'name': 'Sudaraka Wijesinghe'
-    },
-    {
-      'image': 'https://avatars0.githubusercontent.com/u/1643522?v=3&s=46',
-      'name': 'Shane Osbourne'
-    },
-    {
-      'image': 'https://avatars0.githubusercontent.com/u/170270?v=3&s=46',
-      'name': 'Sindre Sorhus'
-    }
-  ]
+export default class App extends Component {
+  constructor(props) {
+    super(props)
 
-export default () => (
-  <div class='app'>
-  { USERS.map(user => <User key={ user.name } { ...user } />) }
-  </div>
-)
+    this.state = {
+      'user': null,
+      'loading': true
+    }
+  }
+
+  componentDidMount() {
+    fetch(this.props.urls.user)
+      .then(r => r.json())
+      .then(user => {
+        this.setState({
+          'loading': false,
+          user
+        })
+      })
+      .catch(console.error)
+  }
+
+  render() {
+    return (
+      <div class='app'>
+      { this.state.loading
+        ? <p>Please wait...</p>
+        : <User name={ this.state.user.name } image={ this.state.user.avatar_url} />
+      }
+      </div>
+    )
+  }
+}
