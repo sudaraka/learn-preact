@@ -1,36 +1,37 @@
 import { h, Component } from 'preact'
 
-import User from './User'
-
 export default class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      'user': null,
-      'loading': true
+      'text': ''
     }
+
+    this.setText = this.setText.bind(this)
+    this.submit = this.submit.bind(this)
   }
 
-  componentDidMount() {
-    fetch(this.props.urls.user)
-      .then(r => r.json())
-      .then(user => {
-        this.setState({
-          'loading': false,
-          user
-        })
-      })
-      .catch(console.error)
+  setText(e) {
+    this.setState({
+      'text': e.target.value
+    })
   }
 
-  render({ urls }, { user, loading }) {
+  submit() {
+    console.log(this.state.text)
+  }
+
+  render() {
     return (
-      <div class='app'>
-      { loading
-        ? <p>Fetching { urls.user }</p>
-        : <User name={ user.name } image={ user.avatar_url} />
-      }
+      <div>
+        <form onSubmit={ this.submit } action="">
+          <input type="text" value={ this.state.text } onInput={ this.setText } />
+        </form>
+
+        <pre>
+          <code>{ JSON.stringify(this.state, null, 2) }</code>
+        </pre>
       </div>
     )
   }
